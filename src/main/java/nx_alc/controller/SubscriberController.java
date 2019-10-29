@@ -1,5 +1,6 @@
 package nx_alc.controller;
 
+import nx_alc.subscriber.Subscriber;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,6 +37,16 @@ public class SubscriberController {
         modelAndView.setViewName("test_hello_me");
         return modelAndView;
     }
+
+    @GetMapping(value = "/subs") // only for test, to delete
+    public ModelAndView getTestSubscriber() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("test_subs");
+        modelAndView.addObject("subscriber", subscriber);
+        return modelAndView;
+    }
+
+    Subscriber subscriber = new Subscriber("Ivan", "Egorov", "8913913913", 120.00);
 
 
 }
