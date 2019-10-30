@@ -1,4 +1,4 @@
-package nx_alc.subscriber;
+package nx_alc.model;
 
 public enum  Status {
     ACTIVE, BLOCKED;

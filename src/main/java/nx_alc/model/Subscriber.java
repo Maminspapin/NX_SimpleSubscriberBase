@@ -1,4 +1,4 @@
-package nx_alc.subscriber;
+package nx_alc.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

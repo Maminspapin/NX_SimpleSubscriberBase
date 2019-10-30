@@ -1,6 +1,6 @@
 package nx_alc.controller;
 
-import nx_alc.subscriber.Subscriber;
+import nx_alc.model.Subscriber;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
