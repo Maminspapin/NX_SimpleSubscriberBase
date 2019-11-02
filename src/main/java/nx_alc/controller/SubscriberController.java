@@ -98,5 +98,14 @@ public class SubscriberController {
         return modelAndView;
     }
 
+    @GetMapping(value="/delete/{id}")
+    public ModelAndView deleteSubs(@PathVariable("id") int id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/all");
+        Subscriber subscriber = subscriberService.getSubsById(id);
+        subscriberService.delete(subscriber);
+        return modelAndView;
+    }
+
 
 }
