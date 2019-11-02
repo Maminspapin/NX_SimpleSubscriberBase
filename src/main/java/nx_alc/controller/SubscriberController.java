@@ -83,14 +83,14 @@ public class SubscriberController {
         return modelAndView;
     }
 
-    @GetMapping(value = "/add")
+    @GetMapping(value = "/add") // only for test, to delete
     public ModelAndView addPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("test_edit");
         return modelAndView;
     }
 
-    @PostMapping(value = "/add")
+    @PostMapping(value = "/add") // only for test, to delete
     public ModelAndView addSubs(@ModelAttribute("subscriber") Subscriber subscriber) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/all");
@@ -98,7 +98,7 @@ public class SubscriberController {
         return modelAndView;
     }
 
-    @GetMapping(value="/delete/{id}")
+    @GetMapping(value="/delete/{id}") // only for test, to delete
     public ModelAndView deleteSubs(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/all");
