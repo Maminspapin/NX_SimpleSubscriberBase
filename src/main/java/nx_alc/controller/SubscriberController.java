@@ -78,8 +78,23 @@ public class SubscriberController {
     @PostMapping(value = "/edit") // only for test, to delete
     public ModelAndView editSubs(@ModelAttribute("subscriber") Subscriber subscriber) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/maminspapin/all");
+        modelAndView.setViewName("redirect:/all");
         subscriberService.edit(subscriber);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/add")
+    public ModelAndView addPage() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("test_edit");
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/add")
+    public ModelAndView addSubs(@ModelAttribute("subscriber") Subscriber subscriber) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/all");
+        subscriberService.add(subscriber);
         return modelAndView;
     }
 
