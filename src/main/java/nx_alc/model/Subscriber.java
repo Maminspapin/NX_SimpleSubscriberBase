@@ -32,7 +32,8 @@ public class Subscriber {
     @Column(name = "status")
     private Status status;
 
-    public Subscriber(String name, String lastname, String msisdn, double balance) {
+    public Subscriber(int id, String name, String lastname, String msisdn, double balance) {
+        this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.msisdn = msisdn;
