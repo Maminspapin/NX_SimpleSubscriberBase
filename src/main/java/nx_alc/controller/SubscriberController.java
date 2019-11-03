@@ -46,21 +46,6 @@ public class SubscriberController {
         return modelAndView;
     }
 
-    @GetMapping(value = "/me") // only for test, to delete
-    public ModelAndView getTestMe() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("test_hello_me");
-        return modelAndView;
-    }
-
-    @GetMapping(value = "/subs") // only for test, to delete
-    public ModelAndView getTestSubscriber() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("test_subs");
-        modelAndView.addObject("subscriber", subscriber);
-        return modelAndView;
-    }
-
     @GetMapping(value = "/all") // only for test, to delete
     public ModelAndView getTestAllSubscribers() {
 
