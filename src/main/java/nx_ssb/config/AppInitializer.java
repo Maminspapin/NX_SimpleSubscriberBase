@@ -1,4 +1,4 @@
-package nx_alc.config;
+package nx_ssb.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

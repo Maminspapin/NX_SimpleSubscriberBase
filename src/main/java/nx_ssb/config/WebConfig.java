@@ -1,4 +1,4 @@
-package nx_alc.config;
+package nx_ssb.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -9,7 +9,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "nx_alc")
+@ComponentScan(basePackages = "nx_ssb")
 public class WebConfig {
 
     @Bean

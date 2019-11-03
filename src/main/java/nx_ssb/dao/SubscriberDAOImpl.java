@@ -1,12 +1,11 @@
-package nx_alc.dao;
+package nx_ssb.dao;
 
-import nx_alc.model.Subscriber;
+import nx_ssb.model.Subscriber;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

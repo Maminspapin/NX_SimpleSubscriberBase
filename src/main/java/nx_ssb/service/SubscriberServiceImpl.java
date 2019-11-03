@@ -1,8 +1,8 @@
-package nx_alc.service;
+package nx_ssb.service;
 
-import nx_alc.dao.SubscriberDAO;
-import nx_alc.dao.SubscriberDAOImpl;
-import nx_alc.model.Subscriber;
+import nx_ssb.dao.SubscriberDAO;
+import nx_ssb.dao.SubscriberDAOImpl;
+import nx_ssb.model.Subscriber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

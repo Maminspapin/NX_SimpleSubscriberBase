@@ -1,4 +1,4 @@
-package nx_alc.config;
+package nx_ssb.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = "nx_alc")
+@ComponentScan(basePackages = "nx_ssb")
 @EnableTransactionManagement
 @PropertySource(value = "classpath:db.properties")
 public class HibernateConfig {
@@ -48,7 +48,7 @@ public class HibernateConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("nx_alc.model");
+        sessionFactory.setPackagesToScan("nx_ssb.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

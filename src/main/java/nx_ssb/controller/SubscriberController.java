@@ -1,7 +1,7 @@
-package nx_alc.controller;
+package nx_ssb.controller;
 
-import nx_alc.model.Subscriber;
-import nx_alc.service.SubscriberService;
+import nx_ssb.model.Subscriber;
+import nx_ssb.service.SubscriberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
