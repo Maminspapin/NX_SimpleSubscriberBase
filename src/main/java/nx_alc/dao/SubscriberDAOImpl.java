@@ -1,6 +1,7 @@
 package nx_alc.dao;
 
 import nx_alc.model.Subscriber;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
+@Repository
 public class SubscriberDAOImpl implements SubscriberDAO{
 
     private static final AtomicInteger AUTO_ID = new AtomicInteger(1);

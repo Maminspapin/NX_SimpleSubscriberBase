@@ -2,7 +2,7 @@ package nx_alc.controller;
 
 import nx_alc.model.Subscriber;
 import nx_alc.service.SubscriberService;
-import nx_alc.service.SubscriberServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,7 +16,12 @@ import java.util.List;
 public class SubscriberController {
 
     private Subscriber subscriber = new Subscriber(0, "Ivan", "Egorov", "8913913913", 120.00);
-    private SubscriberService subscriberService = new SubscriberServiceImpl();
+    private SubscriberService subscriberService;
+
+    @Autowired
+    public void setSubscriberService(SubscriberService subscriberService) {
+        this.subscriberService = subscriberService;
+    }
 
     @GetMapping(value = "/info")
     public ModelAndView getSubscriberInfo() {
