@@ -24,6 +24,7 @@ public class SubscriberDAOImpl implements SubscriberDAO{
         this.sessionFactory = sessionFactory;
     }
 
+    @Override
     @SuppressWarnings("unchecked")
     public List<Subscriber> allSubscribers() {
         Session session = sessionFactory.getCurrentSession();
@@ -32,22 +33,25 @@ public class SubscriberDAOImpl implements SubscriberDAO{
 
     @Override
     public void add(Subscriber subscriber) {
-        subscriber.setId(AUTO_ID.getAndIncrement());
-        subscribers.put(subscriber.getId(), subscriber);
+        Session session = sessionFactory.getCurrentSession();
+        session.persist(subscriber);
     }
 
     @Override
     public void delete(Subscriber subscriber) {
-        subscribers.remove(subscriber.getId());
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(subscriber);
     }
 
     @Override
     public void edit(Subscriber subscriber) {
-        subscribers.put(subscriber.getId(), subscriber);
+        Session session = sessionFactory.getCurrentSession();
+        session.update(subscriber);
     }
 
     @Override
     public Subscriber getSubsById(int id) {
-        return subscribers.get(id);
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Subscriber.class, id);
     }
 }

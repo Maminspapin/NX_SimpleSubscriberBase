@@ -14,6 +14,11 @@ public class SubscriberServiceImpl implements SubscriberService {
 
     private SubscriberDAO subscriberDAO = new SubscriberDAOImpl();
 
+    @Autowired
+    public void setSubscriberDAO(SubscriberDAO subscriberDAO) {
+        this.subscriberDAO = subscriberDAO;
+    }
+
     @Override
     @Transactional
     public List<Subscriber> allSubscribers() {
@@ -21,27 +26,27 @@ public class SubscriberServiceImpl implements SubscriberService {
     }
 
     @Override
+    @Transactional
     public void add(Subscriber subscriber) {
         subscriberDAO.add(subscriber);
     }
 
     @Override
+    @Transactional
     public void delete(Subscriber subscriber) {
         subscriberDAO.delete(subscriber);
     }
 
     @Override
+    @Transactional
     public void edit(Subscriber subscriber) {
         subscriberDAO.edit(subscriber);
     }
 
     @Override
+    @Transactional
     public Subscriber getSubsById(int id) {
         return subscriberDAO.getSubsById(id);
     }
 
-    @Autowired
-    public void setSubscriberDAO(SubscriberDAO subscriberDAO) {
-        this.subscriberDAO = subscriberDAO;
-    }
 }

@@ -15,7 +15,6 @@ import java.util.List;
 @Controller
 public class SubscriberController {
 
-    private Subscriber subscriber = new Subscriber(0, "Ivan", "Egorov", "8913913913", 120.00);
     private SubscriberService subscriberService;
 
     @Autowired
@@ -42,7 +41,7 @@ public class SubscriberController {
     @GetMapping(value = "/") // only for test, to delete
     public ModelAndView getTestPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("test_page");
+        modelAndView.setViewName("redirect:/all");
         return modelAndView;
     }
 
