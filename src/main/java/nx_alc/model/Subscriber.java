@@ -30,7 +30,7 @@ public class Subscriber {
     private double balance;
 
     @Column(name = "status")
-    private Status status;
+    private String status;
 
     public Subscriber(int id, String name, String lastname, String msisdn, double balance) {
         this.id = id;
@@ -38,6 +38,6 @@ public class Subscriber {
         this.lastname = lastname;
         this.msisdn = msisdn;
         this.balance = balance;
-        this.status = this.balance > 0 ? Status.ACTIVE : Status.BLOCKED;
+        this.status = this.balance > 0 ? "ACTIVE" : "BLOCKED";
     }
 }

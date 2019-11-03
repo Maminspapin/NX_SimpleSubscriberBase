@@ -6,6 +6,7 @@ import nx_alc.model.Subscriber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -14,6 +15,7 @@ public class SubscriberServiceImpl implements SubscriberService {
     private SubscriberDAO subscriberDAO = new SubscriberDAOImpl();
 
     @Override
+    @Transactional
     public List<Subscriber> allSubscribers() {
         return subscriberDAO.allSubscribers();
     }

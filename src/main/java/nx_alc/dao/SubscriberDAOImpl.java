@@ -1,6 +1,9 @@
 package nx_alc.dao;
 
 import nx_alc.model.Subscriber;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -14,20 +17,17 @@ public class SubscriberDAOImpl implements SubscriberDAO{
 
     private static final AtomicInteger AUTO_ID = new AtomicInteger(1);
     private static Map<Integer, Subscriber> subscribers = new HashMap<>();
+    private SessionFactory sessionFactory;
 
-    static {
-        Subscriber subs1 = new Subscriber(AUTO_ID.getAndIncrement(), "name1", "lastName1", "testMSISDN1", 10.00);
-        Subscriber subs2 = new Subscriber(AUTO_ID.getAndIncrement(),"name2", "lastName2", "testMSISDN2", -10.00);
-        Subscriber subs3 = new Subscriber(AUTO_ID.getAndIncrement(), "name3", "lastName3", "testMSISDN3", -30.00);
-        subscribers.put(subs1.getId(), subs1);
-        subscribers.put(subs2.getId(), subs2);
-        subscribers.put(subs3.getId(), subs3);
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
-
-    @Override
+    @SuppressWarnings("unchecked")
     public List<Subscriber> allSubscribers() {
-        return new ArrayList<>(subscribers.values());
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("FROM Subscriber").list();
     }
 
     @Override
