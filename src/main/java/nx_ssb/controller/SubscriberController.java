@@ -22,49 +22,32 @@ public class SubscriberController {
         this.subscriberService = subscriberService;
     }
 
-    @GetMapping(value = "/info")
-    public ModelAndView getSubscriberInfo() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("info");
-        return modelAndView;
-    }
-
-    @GetMapping(value = "/count")
-    public ModelAndView getSubscribersQuantity() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("count");
-        return modelAndView;
-    }
-
-    //TODO: Need to add other rests
-
-    @GetMapping(value = "/") // only for test, to delete
-    public ModelAndView getTestPage() {
+    @GetMapping(value = "/")
+    public ModelAndView toMainPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/all");
         return modelAndView;
     }
 
-    @GetMapping(value = "/all") // only for test, to delete
-    public ModelAndView getTestAllSubscribers() {
-
+    @GetMapping(value = "/all")
+    public ModelAndView getAllSubscribers() {
         List<Subscriber> subscribers = subscriberService.allSubscribers();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("test_subscribers");
+        modelAndView.setViewName("subscribers_page");
         modelAndView.addObject("subscribersList", subscribers);
         return modelAndView;
     }
 
-    @GetMapping(value = "/edit/{id}") // only for test, to delete
-    public ModelAndView editPage(@PathVariable("id") int id) {
+    @GetMapping(value = "/edit/{id}")
+    public ModelAndView toEditPage(@PathVariable("id") int id) {
         Subscriber subscriber = subscriberService.getSubsById(id);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("test_edit");
+        modelAndView.setViewName("edit_page");
         modelAndView.addObject("subscriber", subscriber);
         return modelAndView;
     }
 
-    @PostMapping(value = "/edit") // only for test, to delete
+    @PostMapping(value = "/edit")
     public ModelAndView editSubs(@ModelAttribute("subscriber") Subscriber subscriber) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/all");
@@ -72,14 +55,14 @@ public class SubscriberController {
         return modelAndView;
     }
 
-    @GetMapping(value = "/add") // only for test, to delete
-    public ModelAndView addPage() {
+    @GetMapping(value = "/add")
+    public ModelAndView toAddPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("test_edit");
+        modelAndView.setViewName("edit_page");
         return modelAndView;
     }
 
-    @PostMapping(value = "/add") // only for test, to delete
+    @PostMapping(value = "/add")
     public ModelAndView addSubs(@ModelAttribute("subscriber") Subscriber subscriber) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/all");
@@ -87,7 +70,7 @@ public class SubscriberController {
         return modelAndView;
     }
 
-    @GetMapping(value="/delete/{id}") // only for test, to delete
+    @GetMapping(value="/delete/{id}")
     public ModelAndView deleteSubs(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/all");
@@ -96,5 +79,13 @@ public class SubscriberController {
         return modelAndView;
     }
 
+    @GetMapping(value = "/count")
+    public ModelAndView getSubscribersQuantity() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("count_page");
+        long result = subscriberService.count();
+        modelAndView.addObject("result", result);
+        return modelAndView;
+    }
 
 }

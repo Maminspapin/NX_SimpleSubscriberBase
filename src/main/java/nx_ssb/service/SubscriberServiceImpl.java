@@ -49,4 +49,11 @@ public class SubscriberServiceImpl implements SubscriberService {
         return subscriberDAO.getSubsById(id);
     }
 
+    @Override
+    @Transactional
+    public long count() {
+        return subscriberDAO.count();
+    }
+
+
 }

@@ -3,19 +3,15 @@ package nx_ssb.dao;
 import nx_ssb.model.Subscriber;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
 public class SubscriberDAOImpl implements SubscriberDAO{
 
-    private static final AtomicInteger AUTO_ID = new AtomicInteger(1);
-    private static Map<Integer, Subscriber> subscribers = new HashMap<>();
     private SessionFactory sessionFactory;
 
     @Autowired
@@ -52,5 +48,13 @@ public class SubscriberDAOImpl implements SubscriberDAO{
     public Subscriber getSubsById(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Subscriber.class, id);
+    }
+
+    @Override
+    public long count() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("SELECT COUNT (*) FROM Subscriber");
+        long result = (long)query.uniqueResult();
+        return result;
     }
 }

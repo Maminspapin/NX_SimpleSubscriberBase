@@ -11,4 +11,5 @@ public interface SubscriberService {
     void delete(Subscriber subscriber);
     void edit(Subscriber subscriber);
     Subscriber getSubsById(int id);
+    long count();
 }
