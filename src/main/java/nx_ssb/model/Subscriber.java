@@ -32,12 +32,4 @@ public class Subscriber {
     @Column(name = "status")
     private String status;
 
-    public Subscriber(int id, String name, String lastname, String msisdn, double balance) {
-        this.id = id;
-        this.name = name;
-        this.lastname = lastname;
-        this.msisdn = msisdn;
-        this.balance = balance;
-        this.status = this.balance > 0 ? "ACTIVE" : "BLOCKED";
-    }
 }
