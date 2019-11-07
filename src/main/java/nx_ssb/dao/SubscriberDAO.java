@@ -11,7 +11,7 @@ public interface SubscriberDAO {
     void deleteSubscriber(Subscriber subscriber);
     void updateSubscriber(Subscriber subscriber);
     Subscriber getSubscriberById(int id);
-    void customUpdate(String Query);
+    void customUpdate(String updateQuery);
     long count();
 
 }

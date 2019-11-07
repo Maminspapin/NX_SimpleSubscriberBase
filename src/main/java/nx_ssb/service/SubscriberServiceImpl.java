@@ -53,8 +53,8 @@ public class SubscriberServiceImpl implements SubscriberService {
     @Override
     @Transactional
     public void doSms(Subscriber subscriber) {
-        String query = "UPDATE Subscriber SET name = \'sms\' WHERE id = " + subscriber.getId();
-        subscriberDAO.customUpdate(query);
+        String updateQuery = "UPDATE Subscriber SET name = \'sms\' WHERE id = " + subscriber.getId();
+        subscriberDAO.customUpdate(updateQuery);
     }
 
     @Override

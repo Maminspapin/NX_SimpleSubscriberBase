@@ -51,9 +51,9 @@ public class SubscriberDAOImpl implements SubscriberDAO{
     }
 
     @Override
-    public void customUpdate(String Query) {
+    public void customUpdate(String updateQuery) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery(Query);
+        Query query = session.createQuery(updateQuery);
         query.executeUpdate();
     }
 
