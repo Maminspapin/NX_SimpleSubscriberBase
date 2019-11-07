@@ -21,34 +21,42 @@ public class SubscriberDAOImpl implements SubscriberDAO{
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Subscriber> allSubscribers() {
+    public List<Subscriber> getAllSubscribers() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("FROM Subscriber").list();
     }
 
     @Override
-    public void add(Subscriber subscriber) {
+    public void addSubscriber(Subscriber subscriber) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(subscriber);
     }
 
     @Override
-    public void delete(Subscriber subscriber) {
+    public void deleteSubscriber(Subscriber subscriber) {
         Session session = sessionFactory.getCurrentSession();
         session.delete(subscriber);
     }
 
     @Override
-    public void edit(Subscriber subscriber) {
+    public void updateSubscriber(Subscriber subscriber) {
         Session session = sessionFactory.getCurrentSession();
         session.update(subscriber);
     }
 
     @Override
-    public Subscriber getSubsById(int id) {
+    public Subscriber getSubscriberById(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Subscriber.class, id);
     }
+
+    @Override
+    public void customUpdate(String Query) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery(Query);
+        query.executeUpdate();
+    }
+
 
     @Override
     public long count() {

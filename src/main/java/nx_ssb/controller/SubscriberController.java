@@ -31,7 +31,7 @@ public class SubscriberController {
 
     @GetMapping(value = "/all")
     public ModelAndView getAllSubscribers() {
-        List<Subscriber> subscribers = subscriberService.allSubscribers();
+        List<Subscriber> subscribers = subscriberService.getAllSubscribers();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("subscribers_page");
         modelAndView.addObject("subscribersList", subscribers);
@@ -40,7 +40,7 @@ public class SubscriberController {
 
     @GetMapping(value = "/edit/{id}")
     public ModelAndView toEditPage(@PathVariable("id") int id) {
-        Subscriber subscriber = subscriberService.getSubsById(id);
+        Subscriber subscriber = subscriberService.getSubscriberById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("edit_page");
         modelAndView.addObject("subscriber", subscriber);
@@ -51,7 +51,7 @@ public class SubscriberController {
     public ModelAndView editSubs(@ModelAttribute("subscriber") Subscriber subscriber) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/all");
-        subscriberService.edit(subscriber);
+        subscriberService.updateSubscriber(subscriber);
         return modelAndView;
     }
 
@@ -66,7 +66,7 @@ public class SubscriberController {
     public ModelAndView addSubs(@ModelAttribute("subscriber") Subscriber subscriber) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/all");
-        subscriberService.add(subscriber);
+        subscriberService.addSubscriber(subscriber);
         return modelAndView;
     }
 
@@ -74,8 +74,8 @@ public class SubscriberController {
     public ModelAndView deleteSubs(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/all");
-        Subscriber subscriber = subscriberService.getSubsById(id);
-        subscriberService.delete(subscriber);
+        Subscriber subscriber = subscriberService.getSubscriberById(id);
+        subscriberService.deleteSubscriber(subscriber);
         return modelAndView;
     }
 
@@ -85,6 +85,15 @@ public class SubscriberController {
         modelAndView.setViewName("count_page");
         long result = subscriberService.count();
         modelAndView.addObject("result", result);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/sms/{id}")
+    public ModelAndView doSms(@PathVariable int id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/all");
+        Subscriber subscriber = subscriberService.getSubscriberById(id);
+        subscriberService.doSms(subscriber);
         return modelAndView;
     }
 

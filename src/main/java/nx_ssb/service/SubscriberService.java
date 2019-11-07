@@ -6,10 +6,11 @@ import java.util.List;
 
 public interface SubscriberService {
 
-    List<Subscriber> allSubscribers();
-    void add(Subscriber subscriber);
-    void delete(Subscriber subscriber);
-    void edit(Subscriber subscriber);
-    Subscriber getSubsById(int id);
+    List<Subscriber> getAllSubscribers();
+    void addSubscriber(Subscriber subscriber);
+    void deleteSubscriber(Subscriber subscriber);
+    void updateSubscriber(Subscriber subscriber);
+    Subscriber getSubscriberById(int id);
+    void doSms(Subscriber subscriber);
     long count();
 }
